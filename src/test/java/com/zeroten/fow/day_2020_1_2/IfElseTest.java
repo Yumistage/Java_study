@@ -105,7 +105,60 @@ public class IfElseTest {
             default:
                 System.out.println("未识别指令");
                 break;
+        }
+    }
 
+    @Test
+    public void testBreak() {
+
+        int time = 0;
+        while (true) {
+            int r = new Random().nextInt(1000);
+            if (r % 30 == 0) {
+                System.out.println(r + "能被30整除，循环结束");
+                System.out.println("当前循环第" + time + "次");
+                break;
+            } else {
+                System.out.println(r + "不能被30整除，循环继续");
+                time++;
+            }
+        }
+    }
+
+    @Test
+    public void testReturn() {
+        int time = 0;
+        while (true) {
+            int r = new Random().nextInt(1000);
+            if (r % 30 == 0) {
+                System.out.println(r + "能被30整除，循环结束");
+                System.out.println("当前循环第" + time + "次");
+                return;
+            } else {
+                System.out.println(r + "不能被30整除，循环继续");
+                time++;
+            }
+        }
+    }
+
+    @Test
+    public void testContinue() {
+        int time = 0;
+        while (true) {
+            int r = new Random().nextInt(1000);
+            if (r % 30 == 0) {
+                System.out.println(r + "能被30整除，循环继续");
+                if (r % 60 == 0) {
+                    System.out.println(r + "也能被60整除，循环结束");
+                    System.out.println("当前循环第" + time + "次");
+                    return;
+                }
+                continue;
+
+            } else {
+                System.out.println(r + "不能被30整除，循环继续");
+                time++;
+            }
         }
     }
 }
