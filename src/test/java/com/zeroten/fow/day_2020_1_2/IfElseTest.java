@@ -81,5 +81,31 @@ public class IfElseTest {
         System.out.println("总共有" + total + "个单数");
     }
 
+    @Test
+    public void testSwitchCase() {
 
+        int command = 1;
+
+        switch (command) {
+            case 1:
+                System.out.println("执行扫地指令");
+                break;
+            case 2:
+                System.out.println("执行开灯指令");
+                break;
+            case 3:
+                System.out.println("执行关灯指令");
+                break;
+            case 4:
+                System.out.println("执行播放音乐指令");
+                break;
+            case 5:
+                System.out.println("执行播放音乐指令");
+                break;
+            default:
+                System.out.println("未识别指令");
+                break;
+
+        }
+    }
 }
