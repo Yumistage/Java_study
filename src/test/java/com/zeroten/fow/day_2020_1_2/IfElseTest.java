@@ -1,4 +1,4 @@
-package com.zeroten.fow;
+package com.zeroten.fow.day_2020_1_2;
 
 import org.testng.annotations.Test;
 
@@ -48,7 +48,7 @@ public class IfElseTest {
     @Test
     public void testdoWhile() {
         boolean isContinue = true;
-        int times=0;
+        int times = 0;
         do {
             int r = new Random().nextInt(1000);
             if (r % 30 == 0) {
@@ -62,7 +62,24 @@ public class IfElseTest {
         }
         while (isContinue);
 
-        System.out.println("随机产生了"+times+"个不能被30整除的数");
+        System.out.println("随机产生了" + times + "个不能被30整除的数");
 
     }
+
+    @Test
+    public void testFor() {
+        int total = 0;
+        for (int i = 0; i <= 100; i++) {
+            if (i % 2 == 0) {
+                System.out.println(i + "是双数");
+            } else {
+                total++;
+                System.out.println(i + "是单数");
+                System.out.println(i + "是第" + total + "单数");
+            }
+        }
+        System.out.println("总共有" + total + "个单数");
+    }
+
+
 }

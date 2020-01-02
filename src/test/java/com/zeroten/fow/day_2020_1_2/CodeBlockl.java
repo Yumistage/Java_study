@@ -1,4 +1,4 @@
-package com.zeroten.fow;
+package com.zeroten.fow.day_2020_1_2;
 
 import org.testng.annotations.Test;
 
