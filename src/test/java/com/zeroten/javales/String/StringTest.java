@@ -98,4 +98,55 @@ public class StringTest {
         System.out.println(str1);
 
     }
+
+    //StringBuffer是线程安全的 但牺牲了效率
+    //不需要线程安全的使用StringBuilder 这里的效率会快一点
+
+
+    @Test
+    public void testStringBuilderAndStringBuffer() {
+
+        StringBuilder sb= new StringBuilder(5);
+        sb.append("Hello");
+        sb.append(',');
+        sb.append("world");
+
+        System.out.println(sb);
+        System.out.println(sb.toString());
+
+        System.out.println(sb.length());
+        sb.setLength(4);
+        System.out.println(sb.toString());
+        sb.setLength(20);
+        System.out.println(sb.toString());
+
+
+        StringBuffer sb2= new StringBuffer(5);
+        sb2.append("Hello");
+        sb2.append(',');
+        sb2.append("world");
+
+        System.out.println(sb2);
+        System.out.println(sb2.toString());
+
+        System.out.println(sb2.length());
+        sb2.setLength(4);
+        System.out.println(sb2.toString());
+        sb2.setLength(20);
+        System.out.println(sb2.toString());
+
+
+    }
+
+    @Test
+    public void testJVM优化() {
+        //该值进入常量池
+        String str1="Hello"+','+"world";
+        //JVM优化后
+        String str2="Hello,world";
+    }
+
+    //反编译 javap -c ./target/test-class/com/zeroten/javales/String/StringTest.class
+
+
 }
