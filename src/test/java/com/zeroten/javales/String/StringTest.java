@@ -40,21 +40,62 @@ public class StringTest {
 
     @Test
     public void testFormat() {
-        String str1="大写a: "+"A"+" "+"\n";
+        String str1 = "大写a: " + "A" + " " + "\n";
         System.out.println(str1);
-        String str2=String.format("大写a: %c,它的ASCII码是%d %n",'A',(int)'A');
+        String str2 = String.format("大写a: %c,它的ASCII码是%d %n", 'A', (int) 'A');
         System.out.println(str2);
     }
 
     @Test
     public void testCompare() {
 
-        String str1="Hello";
-        String str2="hello";
+        String str1 = "Hello";
+        String str2 = "hello";
         System.out.println(str1.equals(str2));
         System.out.println(str1.equalsIgnoreCase(str2));
+    }
+
+    @Test
+    public void testFind() {
+        String str1 = "Hello";
+
+        System.out.println(str1.indexOf('H'));
+        System.out.println(str1.indexOf('o'));
+        System.out.println(str1.lastIndexOf('o'));
+        System.out.println(str1.lastIndexOf('H'));
+        //没有的字符，值为-1
+        System.out.println(str1.indexOf('z'));
+
+        str1="hello,my name is tom";
+        int index = -1;
+        do {
+            int at1 = str1.indexOf("o", index + 1);
+            if (at1 == -1) {
+                break;
+            }
+            System.out.println(String.format("第%d是小写字母o", at1 + 1));
+            index = at1;
+        }
+        while (true);
+    }
 
 
+    @Test
+    public void testReplace() {
+        System.out.println("Hello".replace('o','O'));
+        System.out.println("Hello".replace("l","L"));
+    }
+
+    @Test
+    public void testRemovePlace() {
+        String str1="   hello";
+        System.out.println(str1.trim());
+        System.out.println(str1.trim().toUpperCase());
+        System.out.println(str1.trim().toLowerCase());
+        str1="";
+        System.out.println(str1);
+        str1=null;
+        System.out.println(str1);
 
     }
 }
