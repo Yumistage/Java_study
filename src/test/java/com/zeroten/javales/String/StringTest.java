@@ -144,9 +144,50 @@ public class StringTest {
         String str1="Hello"+','+"world";
         //JVM优化后
         String str2="Hello,world";
+
+
+        String str3="Hello world";
+        String str4=str3+" .";
+        //JVM优化后
+        StringBuilder sb=new StringBuilder();
+        sb.append(str3);
+        sb.append(" .");
+        System.out.println(sb.toString());
+    }
+
+    @Test
+    public void testOpt3() {
+        String str="";
+        long statrt=System.currentTimeMillis();
+        for (int n=0;n<50000;n++){
+            str+=n;
+        }
+        System.out.println(str.length());
+        System.out.println(String.format("耗时 %dms",System.currentTimeMillis()-statrt));
+
+
+        //JVM优化后
+        StringBuilder sb=new StringBuilder();
+        statrt=System.currentTimeMillis();
+        for (int n=0;n<50000;n++){
+            sb.append(n);
+        }
+        str=sb.toString();
+        System.out.println(str.length());
+        System.out.println(String.format("耗时 %dms",System.currentTimeMillis()-statrt));
+
+        str="";
+        statrt=System.currentTimeMillis();
+        for (int n=0;n<50000;n++){
+            StringBuilder sb2=new StringBuilder();
+            sb2.append(str);
+            sb2.append(n);
+            str=sb2.toString();        }
+
+        System.out.println(str.length());
+        System.out.println(String.format("耗时 %dms",System.currentTimeMillis()-statrt));
     }
 
     //反编译 javap -c ./target/test-class/com/zeroten/javales/String/StringTest.class
-
-
+    
 }
