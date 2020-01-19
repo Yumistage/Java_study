@@ -47,5 +47,15 @@ public class ArrayTestUnit {
         //java8中新增的Lambda表达式
         System.out.println("Lambda循环");
 
+        Arrays.asList(arr).forEach(val->{
+            System.out.println(val);
+            if (val%2==0){
+                System.out.println(String.format("%d 是偶数",val));
+            }
+            else{
+                System.out.println(String.format("%d 是奇数",val));            }
+
+        });
+
     }
 }
