@@ -58,4 +58,30 @@ public class ArrayTestUnit {
         });
 
     }
+
+
+    @Test
+    public void test数组拷贝() {
+
+        Integer[] arr1={1,2,3,4,5};
+        Integer[] arr2={6,7,8,9,10};
+
+        //拷贝arr1的前3个元素生成一个新的数组
+        Integer[] arr3=Arrays.copyOf(arr1,3);
+        System.out.println(Arrays.toString(arr3));
+
+        //拷贝arr2的后3个元素生成一个新的数组
+        Integer[] arr4=Arrays.copyOfRange(arr2,2,4);
+        System.out.println(Arrays.toString(arr4));
+
+        //把arr2的后三位拷贝到arr1的后三位
+        System.arraycopy(arr2,arr2.length-3,arr1,arr1.length-3,3);
+        System.out.println(Arrays.toString(arr1));
+
+
+
+
+
+
+    }
 }
