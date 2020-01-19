@@ -59,7 +59,6 @@ public class ArrayTestUnit {
 
     }
 
-
     @Test
     public void test数组拷贝() {
 
@@ -83,5 +82,23 @@ public class ArrayTestUnit {
 
 
 
+    }
+
+    @Test
+    public void test数组填充() {
+        int[] arr=new int[10];
+
+        //填充数组为5
+        Arrays.fill(arr,5);
+        System.out.println(Arrays.toString(arr));
+
+        for (int index=arr.length-3;index<arr.length;index++){
+            arr[index]=3;
+        }
+        System.out.println(Arrays.toString(arr));
+
+        Arrays.fill(arr,0,6,5);
+        Arrays.fill(arr,7,arr.length,3);
+        System.out.println(Arrays.toString(arr));
     }
 }
