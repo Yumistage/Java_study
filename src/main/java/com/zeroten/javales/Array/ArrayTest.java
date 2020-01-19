@@ -7,4 +7,5 @@ public class ArrayTest {
     //数组读取
     //int arr1[]
     //String arr2[]
+
 }
