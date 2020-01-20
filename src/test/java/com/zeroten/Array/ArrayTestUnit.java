@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Random;
 
 public class ArrayTestUnit {
     @Test
@@ -100,5 +101,17 @@ public class ArrayTestUnit {
         Arrays.fill(arr,0,6,5);
         Arrays.fill(arr,7,arr.length,3);
         System.out.println(Arrays.toString(arr));
+    }
+
+    @Test
+    public void test数组排序() {
+        //定义一个大小为100的int数组，随机给每一位赋值一个0~100的数值，然后排序并打印结果
+        int[]arr=new int[100];
+        for (int index=0;index<100;index++){
+            arr[index]=new Random().nextInt(100);
+        }
+        System.out.println("排序前： "+Arrays.toString(arr));
+        Arrays.sort(arr);
+        System.out.println("排序后： "+Arrays.toString(arr));
     }
 }
