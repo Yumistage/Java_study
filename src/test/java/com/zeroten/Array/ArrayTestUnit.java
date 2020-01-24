@@ -196,4 +196,11 @@ public class ArrayTestUnit {
         return  null;
     }
 
+    @Test
+    public void testBoolean() {
+        boolean[] arr=new boolean[3];
+        System.out.println(arr[0]);
+        Boolean[] arr1=new Boolean[3];
+        System.out.println(arr1[1]);
+    }
 }
