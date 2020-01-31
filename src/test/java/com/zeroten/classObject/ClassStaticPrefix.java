@@ -1,14 +1,26 @@
 package com.zeroten.classObject;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
+
 public class ClassStaticPrefix {
+    static final int MAX_COUNT;
+    final int IMAX_COUNT;
     public static int count;
     public int index;
 
+    {
+        IMAX_COUNT = 7;
+    }
+
+    static {
+        MAX_COUNT = 6;
+    }
+
     //常量
-    public final String STR="abc";
+    public final String STR = "abc";
 
     public ClassStaticPrefix(int index) {
-        this.index=index;
+        this.index = index;
         count++;
     }
 
