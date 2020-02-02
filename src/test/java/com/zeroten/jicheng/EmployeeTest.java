@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.util.Date;
 
-public class EmployeeTest {
+public class EmployeeTest  {
 
     @Test
     public void testPrint() {
@@ -33,13 +33,44 @@ public class EmployeeTest {
     @Test
     public void testDuoTai() {
         Employee yg1 = new Employee();
-
         Manager jl1 = new Manager();
-
 
         Employee yg = yg1;
         yg.printlnInfo();
         yg = jl1;
         yg.printlnInfo();
+
+
+        Object obj = new Date();
+        if (obj instanceof Manager) {
+
+            System.out.println("是父类");
+        } else {
+            System.out.println("不是父类");
+        }
+    }
+
+    @Test
+    public void testObjMethod() {
+        Employee employ = new Employee();
+
+        Employee employ1 = new Employee();
+
+        Employee employ2 = employ;
+
+        System.out.println(employ.getClass().getName());
+        System.out.println(employ.getClass().getSimpleName());
+
+        System.out.println(employ.toString());
+
+        System.out.println(employ.hashCode());
+
+        System.out.println(employ.equals(employ1));
+
+        System.out.println(employ == employ1);
+
+        System.out.println(employ.equals(employ2));
+
+
     }
 }

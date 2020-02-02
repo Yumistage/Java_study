@@ -1,8 +1,10 @@
 package com.zeroten.jicheng;
 
+import com.sun.org.apache.bcel.internal.generic.RETURN;
+
 import java.util.Date;
 
-public class Employee {
+public class Employee implements java.lang.Cloneable {
     private String name;
     private Date hireDay;
     private Integer salary;
@@ -52,5 +54,9 @@ public class Employee {
         sb.append("薪水标准：");
         sb.append(getSalary());
         System.out.println(sb.toString());
+    }
+
+    public  Employee Clone() throws CloneNotSupportedException {
+        return  (Employee)super.clone();
     }
 }
