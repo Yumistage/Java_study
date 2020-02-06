@@ -14,8 +14,20 @@ public class UserInvocationHandler implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 
+        if (args != null && args.length == 1) {
+            if (args[0] instanceof User) {
+                System.out.println("参数1是User");
+                User user = (User) args[0];
+                if (user.getName() == null || user.getName().trim().length() == 0) {
+                    return false;
+                }
+                if (user.getAge() == null || user.getAge() < 0) {
+                    return false;
+                }
+            }
+        }
         Object result = method.invoke(object, args);
-
         return result;
+
     }
 }
