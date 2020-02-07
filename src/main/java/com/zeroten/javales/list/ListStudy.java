@@ -107,35 +107,98 @@ public class ListStudy {
         list.add("B");
         list.add("C");
 
-        Iterator iterator=list.iterator();
+        Iterator iterator = list.iterator();
 
-        ListIterator listIterator=list.listIterator();
+        ListIterator listIterator = list.listIterator();
 
-        System.out.println("has previous:"+listIterator.hasPrevious());
+        System.out.println("has previous:" + listIterator.hasPrevious());
 
-        System.out.println("has next:"+listIterator.hasNext());
+        System.out.println("has next:" + listIterator.hasNext());
 
-        System.out.println("previous:"+listIterator.previousIndex());
+        System.out.println("previous:" + listIterator.previousIndex());
 
-        System.out.println("next:"+listIterator.nextIndex());
+        System.out.println("next:" + listIterator.nextIndex());
 
-        while (listIterator.hasNext())
-        {
+        while (listIterator.hasNext()) {
             System.out.println(listIterator.next());
         }
 
-        System.out.println("has previous:"+listIterator.hasPrevious());
+        System.out.println("has previous:" + listIterator.hasPrevious());
 
-        System.out.println("has next:"+listIterator.hasNext());
+        System.out.println("has next:" + listIterator.hasNext());
 
-        System.out.println("previous:"+listIterator.previousIndex());
+        System.out.println("previous:" + listIterator.previousIndex());
 
-        System.out.println("next:"+listIterator.nextIndex());
+        System.out.println("next:" + listIterator.nextIndex());
 
-        while (listIterator.hasPrevious())
-        {
+        while (listIterator.hasPrevious()) {
             System.out.println(listIterator.previous());
         }
+
+
+    }
+
+
+    private static void StudyLinkedList() {
+        //创建时，没有大小限制
+        //创建方式1
+        System.out.println("创建方法1");
+        List list1 = new LinkedList();
+        list1.add("A");
+        list1.add("B");
+        System.out.println(list1);
+
+        System.out.println("创建方法2");
+        //创建方式2
+        List list2 = new LinkedList(list1);
+
+        System.out.println(list2);
+
+        //其余操作和Arraylist一致
+
+    }
+
+    private static void ListOpTime(List<Integer> list) {
+
+        int iTimes=100000;
+        //for循环遍历
+        //LinkedList每次都会从头开始查找，所以耗时比较大
+        //优化：当i>length/2时，linkedList会从尾部开始找
+        long start = System.currentTimeMillis();
+        for (int i = 0; i < list.size(); i++) {
+            list.get(i);
+        }
+        System.out.printf("[%s] for循环耗时：%d \n", list.getClass().getSimpleName(), System.currentTimeMillis() - start);
+
+        start = System.currentTimeMillis();
+        Iterator iterator = list.iterator();
+        while (iterator.hasNext()) {
+            iterator.next();
+        }
+
+        System.out.printf("[%s] 迭代器循环耗时：%d \n", list.getClass().getSimpleName(), System.currentTimeMillis() - start);
+
+        start = System.currentTimeMillis();
+        for (Integer n :
+                list) {
+        }
+
+        System.out.printf("[%s] foreach循环耗时：%d\n", list.getClass().getSimpleName(), System.currentTimeMillis() - start);
+
+
+        //在第5位插入 10000个1
+        start = System.currentTimeMillis();
+        for (int i = 0; i < iTimes; i++) {
+            list.add(4, 1);
+        }
+        System.out.printf("[%s] 第5位插入值耗时：%d\n", list.getClass().getSimpleName(), System.currentTimeMillis() - start);
+
+        //在末位插入10000个2
+        start = System.currentTimeMillis();
+        for (int i = 0; i < iTimes; i++) {
+            list.add(2);
+        }
+        System.out.printf("[%s] 某位插入值耗时：%d\n", list.getClass().getSimpleName(), System.currentTimeMillis() - start);
 
 
     }
@@ -145,7 +208,35 @@ public class ListStudy {
 
         //StudyArrayListOp();
 
-        listIterator();
+        //listIterator();
+
+        // StudyLinkedList();
+
+        //ArrayList和LinkedList区别
+        //ArrayList 擅长随即快速访问，而从列表中间删除/插入元素很慢
+        //LinkedList 擅长从列表中间删除/插入元素，而随机访问很慢
+        //随机访问：list.get(index) 通过索引来访问
+
+
+        List<Integer> list1 = new ArrayList<>();
+        list1.add(1);
+        list1.add(2);
+        list1.add(3);
+        list1.add(4);
+        list1.add(5);
+        list1.add(6);
+
+        ListOpTime(list1);
+
+        List<Integer> list2 = new LinkedList<>();
+        list2.add(1);
+        list2.add(2);
+        list2.add(3);
+        list2.add(4);
+        list2.add(5);
+        list2.add(6);
+
+        ListOpTime(list2);
     }
 
 
