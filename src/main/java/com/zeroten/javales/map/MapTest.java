@@ -131,9 +131,9 @@ str[256]={
         //3.遍历
         //键值--值
         //Map 严格意义上来讲，不是一个集合，但是它可以返回3个视图
-        //3.1 键值视图   Set
-        //3.2 值试图     Collection
-        //3.3 键值对试图  Entry
+        //3.1 键值视图---Set----------键值集-------keySet()
+        //3.2 值试图-----Collection---值集合------values()
+        //3.3 键值对试图--Entry--------键值集------EntrySet()
         System.out.println("遍历方法：键视图");
         Set<String> set = map.keySet();
         System.out.println(set);
@@ -166,7 +166,6 @@ str[256]={
 
         //对于自定义类判断相等，equals默认比较的是引用
         //如果需要实现值比较，需要覆写equals方法同时需要浮现hashcode方法
-
 
     }
 
