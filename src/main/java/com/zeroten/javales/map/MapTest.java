@@ -166,6 +166,10 @@ str[256]={
 
         //对于自定义类判断相等，equals默认比较的是引用
         //如果需要实现值比较，需要覆写equals方法同时需要浮现hashcode方法
+        //计算哈希值时，key。hashCode()
+        //在桶内比较某个key值是否存在使用的是key.equals(inputKey)
+        //"001":{name:"n1",age:2}
+        //"010":{name:"n1",age:2}
 
     }
 
