@@ -2,6 +2,7 @@ package com.zeroten.javales.map;
 
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class QueueTest {
@@ -22,13 +23,20 @@ public class QueueTest {
     public static void main(String[] args) {
 
         //队列
-        testQueueOp();
+        // testQueueOp();
 
         //双端队列
-        testDeQueup();
+        //testDeQueup();
+
+        //优先级队列：任务调度
+        //内部特点：内部使用了一种堆的数据结构，他是一个自我调整的二叉树
+        //        当添加删除元素时，他能快速的找到队列中最小的元素，
+        //        并且移动到树的根部，而不用对所有元素进行排序
+        //对优先级队列进行遍历时，他是无序的
+        testPriortyQueue();
     }
 
-    private  static void testQueueOp(){
+    private static void testQueueOp() {
         //队列
         //Queue 接口的方法
         Queue<String> queue = new LinkedList();
@@ -68,15 +76,15 @@ public class QueueTest {
         //使用peek方法后，先判断返回结果是否为null
         System.out.println(queue);
         queue.clear();
-        System.out.println("队头元素："+queue.element());
-        System.out.println("队头元素："+queue.peek());
+        System.out.println("队头元素：" + queue.element());
+        System.out.println("队头元素：" + queue.peek());
 
         //改，一般没有修改操作
     }
 
-    private  static void testDeQueup(){
+    private static void testDeQueup() {
         //双端队列 Deque：增删查改
-        Deque<String> deque=new LinkedList<>();
+        Deque<String> deque = new LinkedList<>();
 
         //增：    add/offer
         //       addFirst/addLast/offerFirst/offerLast
@@ -84,5 +92,50 @@ public class QueueTest {
         //       removeFirst/removeLast/pollFirst/pollLast
         //查：    element/peek
         //       getFirst/getLast/peekFirst/peekLast
+
+        deque.addLast("str3");
+        deque.addLast("str2");
+        deque.addFirst("str1");
+        deque.addFirst("str4");
+        System.out.println(deque);
+        while (deque.pollFirst() != null) {
+            System.out.println(deque.pollFirst());
+            System.out.println(deque);
+        }
+
+    }
+
+    private static void testPriortyQueue() {
+        PriorityQueue<String> pq = new PriorityQueue();
+        pq.add("1");
+        pq.add("3");
+        pq.add("5");
+        pq.add("7");
+        pq.add("2");
+        pq.add("4");
+        pq.add("6");
+        pq.add("8");
+
+        //数组或者实现了Iterable的类可以使用foreach语法
+        System.out.println(pq);
+        for (String str :
+                pq) {
+            System.out.println(str);
+        }
+
+        //remove 删除并返回队列中最小的元素
+        //如果队列为空则抛NOSuchElementException异常
+        //在使用remove之前判断当前队列是否为空
+
+        //TreeMap 在构建时，指定Compatator
+        //        如果构建是未指定Compatator，key值对象必须实现Comparable接口
+        //Comparable与Compatator的区别
+        //前者是比较自身和另外一个对象 使用 CompareTo
+        //后者是比较传入的两个对象使用 Compare
+
+
+        //优先级队列如何找最小元素：构建时指定Compatator，或者存放的元素类型实现Compatator接口
+
+
     }
 }
