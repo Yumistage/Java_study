@@ -1,9 +1,6 @@
 package com.zeroten.javales.map;
 
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
 public class QueueTest {
     //队列 Queue
@@ -106,22 +103,22 @@ public class QueueTest {
     }
 
     private static void testPriortyQueue() {
-        PriorityQueue<String> pq = new PriorityQueue();
-        pq.add("1");
-        pq.add("3");
-        pq.add("5");
-        pq.add("7");
-        pq.add("2");
-        pq.add("4");
-        pq.add("6");
-        pq.add("8");
-
-        //数组或者实现了Iterable的类可以使用foreach语法
-        System.out.println(pq);
-        for (String str :
-                pq) {
-            System.out.println(str);
-        }
+//        PriorityQueue<String> pq = new PriorityQueue();
+//        pq.add("1");
+//        pq.add("3");
+//        pq.add("5");
+//        pq.add("7");
+//        pq.add("2");
+//        pq.add("4");
+//        pq.add("6");
+//        pq.add("8");
+//
+//        //数组或者实现了Iterable的类可以使用foreach语法
+//        System.out.println(pq);
+//        for (String str :
+//                pq) {
+//            System.out.println(str);
+//        }
 
         //remove 删除并返回队列中最小的元素
         //如果队列为空则抛NOSuchElementException异常
@@ -135,9 +132,48 @@ public class QueueTest {
 
 
         //优先级队列如何找最小元素：构建时指定Compatator，或者存放的元素类型实现Compatator接口
+        PriorityQueue<Task> tasklist = new PriorityQueue<>(new Comparator<Task>() {
+            @Override
+            public int compare(Task o1, Task o2) {
+                if (o1.priority < o2.priority) {
+                    return -1;
+                }
+                if (o1.priority == o2.priority) {
+                    return 0;
+                }
+                return 1;
+            }
+        });
+        for (int i = 0; i < 10; i++) {
+            int priority = new Random().nextInt(10);
+            Task task = new Task(priority, "任务" + (i + 1));
+            tasklist.add(task);
+        }
 
-        //aaa
+        //执行
+        while (true) {
+            if (tasklist.isEmpty()) {
+                System.out.println("任务执行完成，退出");
+                break;
+            }
+            Task task = tasklist.remove();
+            System.out.println(String.format("执行任务  名称： %s , 优先级：%d", task.name, task.priority));
 
+        }
+    }
 
+    static class Task {
+        private int priority;
+        private String name;
+
+        public Task(int priority, String name) {
+            this.priority = priority;
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return "任务" + name + "(" + priority + ")";
+        }
     }
 }
